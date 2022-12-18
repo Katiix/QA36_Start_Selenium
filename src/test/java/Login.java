@@ -42,7 +42,22 @@ public class Login {
 
     @Test
     public void registrationSuccess(){
-        
+        WebElement itemLogin = wd.findElement(By.linkText("LOGIN"));
+        itemLogin.click();
+
+        WebElement email = wd.findElement(By.name("email"));
+        email.clear();
+        email.click();
+        email.sendKeys("katya@gmail.com");
+
+        WebElement password = wd.findElement(By.name("password"));
+        password.clear();
+        password.click();
+        password.sendKeys("Kkate1234$");
+
+        WebElement registrationButton = wd.findElement(By.name("registration"));
+        registrationButton.click();
+
     }
 
     @Test
