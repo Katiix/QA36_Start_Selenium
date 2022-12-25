@@ -86,6 +86,28 @@ public class Login {
         buttonLogin.click();
         Assert.assertEquals("","");
     }
+
+    @Test
+    public void cssLocatorTest(){
+        wd.findElement(By.linkText("LOGIN")).click();
+        wd.findElement(By.tagName("div"));
+        wd.findElement(By.cssSelector("div"));
+        wd.findElement(By.cssSelector(".container"));
+        wd.findElement(By.cssSelector(".active"));
+        wd.findElement(By.cssSelector(".navbar-component_nav__1X_4m"));
+        wd.findElement(By.cssSelector("[aria-current='page']"));
+        wd.findElement(By.cssSelector("[placeholder='Email']"));
+        wd.findElement(By.cssSelector("[placeholder='Password']"));
+        wd.findElement(By.cssSelector("[placeholder^='Pass']"));
+        wd.findElement(By.cssSelector("[placeholder*='ass']"));
+        wd.findElement(By.cssSelector("[placeholder$='ord']"));
+        wd.findElement(By.cssSelector("div.container[id=root]"));
+        wd.findElement(By.cssSelector("[href='/login']"));
+        wd.findElement(By.cssSelector("input[name=email]"));
+        wd.findElement(By.cssSelector("button[name=login]"));
+        wd.findElement(By.cssSelector("button:last-child")); //registration button search
+        wd.findElement(By.cssSelector("form:last-child")); //form search
+    }
     @AfterMethod
     public void postCondition(){
         //close browser
