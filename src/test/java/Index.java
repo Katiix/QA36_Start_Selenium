@@ -22,16 +22,52 @@ public class Index {
     @Test
     public void itemsTest(){
         //find item1 & click ==> assert that div#alert contains message "Clicked by Item 1"
+        WebElement item1 = wd.findElement(By.cssSelector("[href='#item1']"));
+        item1.click();
+        WebElement alert = wd.findElement(By.cssSelector("#alert .message"));
+        String text = alert.getText();
+        Assert.assertTrue(text.equals("Clicked by Item 1"));
+
         //find item2 & click ==> assert that div#alert contains message "Clicked by Item 2"
+        WebElement item2 = wd.findElement(By.cssSelector("[href='#item2'"));
+        item2.click();
+        WebElement alert2 = wd.findElement(By.cssSelector("#alert .message"));
+        String text2 = alert.getText();
+        Assert.assertTrue(text2.equals("Clicked by Item 2"));
+
         //find item3 & click ==> assert that div#alert contains message "Clicked by Item 3"
+        WebElement item3 = wd.findElement(By.cssSelector("[href='#item3'"));
+        item3.click();
+        WebElement alert3 = wd.findElement(By.cssSelector("#alert .message"));
+        String text3 = alert.getText();
+        Assert.assertTrue(text3.equals("Clicked by Item 3"));
+
         //find item4 & click ==> assert that div#alert contains message "Clicked by Item 4"
+        WebElement item4 = wd.findElement(By.cssSelector("[href='#item4'"));
+        item4.click();
+        WebElement alert4 = wd.findElement(By.cssSelector("#alert .message"));
+        String text4 = alert.getText();
+        Assert.assertTrue(text4.equals("Clicked by Item 4"));
 
     }
 
     @Test
     public void formTests(){
         //fill name&surname & click send
+        WebElement name = wd.findElement(By.cssSelector("#form1 :first-child"));
+        name.click();
+        name.clear();
+        name.sendKeys("Kateryna");
+        WebElement surname = wd.findElement(By.cssSelector("#form1 :nth-child(2)"));
+        surname.click();
+        //surname.clear();
+        surname.sendKeys("Skyba");
+        WebElement button = wd.findElement(By.cssSelector(".btn"));
+        button.click();
         //assert that div#alert contains message "name&surname"
+        WebElement alert5 = wd.findElement(By.cssSelector("#alert .message"));
+        String text5 = alert5.getText();
+        Assert.assertTrue(text5.equals("Kateryna Skyba"));
     }
     @Test
     public void tableTest(){
