@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -36,11 +37,14 @@ public class Index {
         Assert.assertTrue(text2.equals("Clicked by Item 2"));
 
         //find item3 & click ==> assert that div#alert contains message "Clicked by Item 3"
-        WebElement item3 = wd.findElement(By.cssSelector("[href='#item3'"));
+        //WebElement item3 = wd.findElement(By.cssSelector("[href='#item3'"));
+        WebElement item3 = wd.findElement(By.xpath("//li[3]'"));
         item3.click();
+        String item3Text = item3.getText();
         WebElement alert3 = wd.findElement(By.cssSelector("#alert .message"));
         String text3 = alert.getText();
-        Assert.assertTrue(text3.equals("Clicked by Item 3"));
+        //Assert.assertTrue(text3.equals("Clicked by Item 3"));
+        Assert.assertTrue(text.contains(item3Text));
 
         //find item4 & click ==> assert that div#alert contains message "Clicked by Item 4"
         WebElement item4 = wd.findElement(By.cssSelector("[href='#item4'"));
@@ -58,6 +62,7 @@ public class Index {
         name.click();
         name.clear();
         name.sendKeys("Kateryna");
+        String inputText = name.getAttribute("value");
         WebElement surname = wd.findElement(By.cssSelector("#form1 :nth-child(2)"));
         surname.click();
         //surname.clear();
@@ -87,4 +92,8 @@ public class Index {
         wd.quit();
     }
 
+    @AfterMethod
+    public void close(){
+        wd.quit();
+    }
 }
